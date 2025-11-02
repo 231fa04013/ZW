@@ -20,11 +20,12 @@ app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 
 // ✅ Serve frontend in production
-const __dirname1 = path.resolve();
-app.use(express.static(path.join(__dirname1, "/frontend/build")));
+// Make sure we use the project root as base
+const root = path.join(__dirname, ".."); // go one level up from backend
+app.use(express.static(path.join(root, "frontend", "build")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname1, "frontend", "build", "index.html"));
+  res.sendFile(path.join(root, "frontend", "build", "index.html"));
 });
 
 // Start server
