@@ -18,7 +18,7 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/signup", formData);
+      const res = await axios.post("https://zw-zejn.onrender.com/api/auth/signup", formData);
       setMessage(res.data.msg);
     } catch (err) {
       setMessage(err.response?.data?.msg || "Signup failed");
